@@ -1,0 +1,33 @@
+{
+  "scheme": "cv10_strat_dx_site",
+  "inputs": {"fmri_arm": "z_func_s0_thin_hp128", "struct_arm": "z_struct185"},
+  "paths": {
+    "covariates": "data/derived/covariates.csv",
+    "assignments": "data/derived/assignments.csv",
+    "struct_inputs": "data/derived/struct_185.csv",
+    "func_inputs": "data/derived/func_s0_thin_hp128.csv",
+    "blank_rows": "data/derived/blank_rows.csv",
+    "resid_struct": "data/derived/resid_struct.csv",
+    "resid_func": "data/derived/resid_func.csv",
+    "folds": "data/folds.csv.gz",
+    "yeo_map": "data/thickness_region_to_yeo17.csv",
+    "yeo17_names": "data/raw/braincharts/docs/phenotypes_yeo17.txt",
+    "outputs": "outputs"
+  },
+  "seeds": [0, 1, 2, 3, 4],
+  "split": {"train": 0.70, "val_es": 0.15, "val_head": 0.15},
+  "model": {"d": 32, "layers": 2, "heads": 4, "ffn": 64, "dropout": 0.3, "attn_dropout": 0.1},
+  "train": {"lr": 0.0005, "weight_decay": 0.01, "batch": 64, "max_epochs": 200, "patience": 20, "grad_clip": 1.0, "threads": 2},
+  "tabm": {"members": 32, "width": 128, "dropout": 0.1, "lr": 0.001, "weight_decay": 0.0001, "batch": 64, "grad_clip": 1.0,
+           "patience": 20, "max_epochs": 300, "threads": 2, "seeds": 5, "seed_stream": 3, "mc_dropout_stream": 12, "mc_passes": 20},
+  "heads": {"mox_theta_ridge": 0.001, "mox_scale_ridge": 0.1, "add_ridge": 0.001, "bary_ridge": 0.001,
+            "mox_starts": [[0, 0, 0, 0, 0.541324854612918, 0.541324854612918, 0], [-3, -3, -3, 3, 0.541324854612918, 0.541324854612918, 0],
+                           [0, 2, 2, -3, 0.541324854612918, 0.541324854612918, 0], [3, -3, -3, -3, 0.541324854612918, 0.541324854612918, 0],
+                           [-3, 3, -3, -3, 0.541324854612918, 0.541324854612918, 0], [-3, -3, 3, -3, 0.541324854612918, 0.541324854612918, 0],
+                           [0, 0, 0, 0, 2.041324854612918, 0.541324854612918, 0], [0, 0, 0, 0, 0.541324854612918, 2.041324854612918, 0],
+                           [0, 0, 0, 0, -0.958675145387082, 0.541324854612918, 0], [0, 0, 0, 0, 0.541324854612918, -0.958675145387082, 0]],
+            "optimizer_options": {"ftol": 1e-13, "gtol": 1e-9, "maxiter": 3000},
+            "fit_checks": {"control_mean_exp_e_minus_1": 1e-6, "max_abs_gradient_per_row": 1e-5},
+            "self_test": {"shift": [1.0, -0.5], "rel_tol": 1e-9}},
+  "finetune": {"lr": 0.0001, "max_epochs": 30, "patience": 5, "aux_weight": 0.3, "keep_start": true, "seed_stream": 2}
+}
