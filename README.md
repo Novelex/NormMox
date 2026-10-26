@@ -1,7 +1,7 @@
 # NormMoX
 
 Code for **NormMoX: Explainable multimodal autism classification using deviations from normative brain charts**
-(Muhammad Hasan Masrur and Fani Deligianni, University of Glasgow).
+(Muhammad Hasan Masrur).
 
 NormMoX scores 185 structural MRI measures and 136 resting-state network connectivities of ABIDE I (1,035 participants, 20 site
 samples) against pretrained lifespan normative charts, calibrates the deviations to each site with training-fold controls only
