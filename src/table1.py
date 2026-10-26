@@ -1,7 +1,7 @@
 """Table 1: mean +- SD over the 10 repeats of 10-fold cross-validation, and the AUROC of NormMoX against every other
 row (corrected resampled t-test on the 100 per-fold differences, Holm correction over the comparisons).
 
-usage: python src/13_tables.py [--per-fold results/per_fold_metrics.csv] [--out outputs]
+usage: python src/table1.py [--per-fold results/per_fold_metrics.csv] [--out outputs]
 """
 import argparse
 import os
